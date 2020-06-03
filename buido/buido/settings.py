@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd%6vcx(gnna%m(i1%q#r%a)8pl@tot6fohuy+co=3m78d^##*g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['buido.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['*']#'buido.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -37,8 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #3rd party
+    'rest_framework',
+    'crispy_forms',
+
     #local
     'requesters.apps.RequestersConfig',
+    'groups.apps.GroupsConfig',
+    'requisitions.apps.RequisitionsConfig',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +63,7 @@ ROOT_URLCONF = 'buido.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,3 +133,18 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = "requesters.Requester"
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'nethely2@gmail.com'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

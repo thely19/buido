@@ -8,10 +8,10 @@ class RequesterCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = Requester
-        fields = UserCreationForm.Meta.fields
+        fields = ('username', 'email')
 
 class RequesterChangeForm(UserChangeForm):
 
     class Meta(UserChangeForm):
         model = Requester
-        fields = UserChangeForm.Meta.fields
+        fields = ('username', 'email')

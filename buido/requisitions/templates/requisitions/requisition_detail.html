@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Details{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <span class="font-weight-bold">{{ requisition.date_request }}</span>&middot;
+        </div>
+        <div class="card-body">
+            <div class="d-inline">{{ requisition.narration }}</div>
+            <div class="d-inline">{{ requisition.amount }}</div>
+            <div class="d-inline">{{ requisition.is_requested }}</div>
+            <div class="d-inline">{{ requisition.group }}</div>
+            <a href="{% url 'requisition_list' %}" class="btn btn-outline-primary btn-sm"><i class="fa fa-undo"></i></a>
+            
+        </div>
+    </div>
+    
+{% endblock %}

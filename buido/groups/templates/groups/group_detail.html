@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Group{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <span class="font-weight-bold">Details</span>&middot;
+        </div>
+        <div class="card-body">
+            <div class="d-inline">{{ group.group_name }}</div>
+            <div class="d-inline mr-2">
+                <a href="{% url 'group_edit' group.pk %}" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a>
+                <a href="{% url 'group_delete' group.pk %}" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></a>
+                <a href="{% url 'group_list' %}" class="btn btn-outline-primary btn-sm"><i class="fa fa-undo"></i></a>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    {% if object_list %}
+        <div class="table">
+            <table class="table">
+                <thead>
+                    <th>Date</th>
+                    <th>Narration</th>
+                    <th>Amount</th>
+                    <th>Publish</th>
+                    <th>Group</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </thead>
+                <tbody>
+                    {% for requisition in object_list %}
+                        <tr>
+                            <td>{{ requisition.date_request }}</td>
+                            <td>{{ requisition.narration }}</td>
+                            <td>{{ requisition.amount }}</td>
+                            <td>{{ requisition.is_request }}</td>
+                            <td>{{ requisition.group }}</td>
+                            <td><a href="{% url 'requisition_edit' requisition.pk %}" class="btn btn-outline-info btn-sm"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="{% url 'requisition_delete' requisition.pk %}" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></a></td>
+                        </tr>
+                    {% endfor %}       
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+    <div class="jumbotron">
+        <h1>Add a <a href="{% url 'requisition_new' %}"><i class="fa fa-plus">New request</i></a></a> </h1>
+    </div>
+    {% endif %}
+
+{% endblock %}
